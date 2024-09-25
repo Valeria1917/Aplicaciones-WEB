@@ -1,0 +1,28 @@
+<header>
+  <h1> Restaurantes - Dolores Hidalgo</h1>
+<nav>
+  <a [routerLink]="['/paquetes-personalizados']" class="nav_menu_link link">Atrás</a>
+  <a [routerLink]="['/parte5']" class="nav_menu_link link">Siguiente</a>
+</nav>
+</header>
+<div class="container">
+    <div *ngFor="let restaurante of restaurantes">
+    	<div class="restaurant">
+        	<h2>Restaurante “{{restaurante.nom_hs}}”</h2>
+        	<img [src]="restaurante.img_hs" alt="{{restaurante.img_hs}}">
+
+
+        	<div class="info">
+            	<div><span class="info-label"><strong>Nombre:</strong></span> {{restaurante.nom_hs}}</div>
+            	<!-- <div><span class="info-label">Categoría:</span> Cuenta con 0 estrellas</div> -->
+            	<div><span class="info-label"><strong>Tipología:</strong></span> {{restaurante.tipologia_hs}}</div>
+            	<!-- <div><span class="info-label">Localización:</span> {{restaurante.nom_hs}}</div> -->
+            	<div><span class="info-label"><strong>Breve descripción:</strong></span> {{restaurante.descripcion_hs}}</div>
+            	<!-- <div><span class="info-label">Infraestructura:</span> {{restaurante.nom_hs}}</div>- -->
+            	<div><span class="info-label"><strong>Accesibilidad/Infraestructura:</strong></span> {{restaurante.accesibility_infrastr_hs}}</div>
+            	<div><span class="info-label"><strong>Servicios con los que cuenta:</strong></span> {{restaurante.servicios}}</div>
+            	<div><span class="info-label"><strong>Costo:</strong></span> {{restaurante.costo_hs}}</div>
+        	</div>
+    	</div>
+    </div>
+</div>

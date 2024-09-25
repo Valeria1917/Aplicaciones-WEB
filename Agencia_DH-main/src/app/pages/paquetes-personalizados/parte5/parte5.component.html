@@ -1,0 +1,26 @@
+<header>
+  <h1>Explora nuestras diferentes atracciones</h1>
+  <nav>
+    <a [routerLink]="['/parte4']" class="nav_menu_link link">Atrás</a>
+    <a [routerLink]="['/parte2']" class="nav_menu_link link">Siguiente</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <section>
+    <div class="attractions">
+      <div *ngFor="let atractivo of atractivos">
+        <div class="attraction">
+          <h2>{{atractivo.nom_actur}}</h2>
+          <p><strong>Categoría:</strong> {{atractivo.categoria_actur}}.</p>
+          <p><strong>Tipología:</strong> {{atractivo.tipologia_actur}}.</p>
+          <p><strong>Localización:</strong> {{atractivo.localidad_actur}}.</p>
+          <p><strong>Descripción:</strong> {{atractivo.descripcion_actur}}.</p>
+          <p><strong>Servicios:</strong> {{atractivo.servicios_actur}}.</p>
+          <p><strong>Costo:</strong> {{atractivo.costo_actur}}.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

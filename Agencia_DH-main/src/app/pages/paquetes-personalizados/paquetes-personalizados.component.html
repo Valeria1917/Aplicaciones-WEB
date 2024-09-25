@@ -1,0 +1,22 @@
+<header>
+  <h1>Hoteles en Dolores Hidalgo, Guanajuato</h1>
+  <nav>
+    <button (click)="router.navigate(['/inicio'])" class="nav_menu_link link">Atrás</button>
+    <button (click)="router.navigate(['/parte4'])" class="nav_menu_link link">Siguiente</button>
+  </nav>
+</header>
+<div class="container">
+  <div class="content">
+    <div *ngFor="let hotel of hoteles" class="item">
+      <img [src]="hotel.img_hs" alt="{{hotel.nom_hs}}">
+      <h2>{{hotel.nom_hs}}</h2>
+      <p><strong>Descripción:</strong> {{hotel.descripcion_hs}}</p>
+      <p><strong>Accesibilidad:</strong> {{hotel.accesibility_infrastr_hs}}</p>
+      <p><strong>Tipología:</strong> {{hotel.tipologia_hs}}</p>
+      <p><strong>Costo:</strong> {{hotel.costo_hs}}</p>
+      <p><strong>Capacidad:</strong> {{hotel.capacidad_hs}}</p>
+      <p><strong>Servicios:</strong> {{hotel.servicios}}</p>
+      <p><strong>Tipología:</strong> {{hotel.tipologia_hs}}</p>
+    </div>
+  </div>
+</div>

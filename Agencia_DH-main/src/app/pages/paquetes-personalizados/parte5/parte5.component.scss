@@ -1,0 +1,197 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: linear-gradient(45deg, #f5f5f5, #d7a07d);
+  animation: backgroundColorChange 10s infinite alternate;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Header Styles */
+header {
+  background: #6f4e37;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  animation: slideInDown 1s ease-out;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Navigation Menu Link Styles */
+nav {
+  margin-top: 20px; /* Increased space between header and nav links */
+  margin-bottom: 20px; /* Space below the navigation menu */
+}
+.nav_menu_link {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #a57c5e;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1s ease-out; /* Fade in effect */
+}
+.nav_menu_link:hover,
+.nav_menu_link:focus {
+  background-color: #8d5b4f;
+  border-color: #6d4c41;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow on hover */
+}
+.nav_menu_link:active {
+  background-color: #6d4c41;
+  transform: scale(1);
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Adjust this value according to your design */
+  margin: 0 auto; /* Center the container */
+  overflow: hidden;
+  position: relative; /* Position relative for border animation */
+  display: flex;
+  flex-direction: column; /* Ensure vertical stacking */
+  gap: 20px; /* Space between sections */
+}
+
+/* Animated Contour around the container */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border: 5px solid transparent;
+  border-radius: 15px;
+  border-image: linear-gradient(45deg, #a57c5e, #d7a07d, #a57c5e);
+  border-image-slice: 1;
+  z-index: 1;
+  animation: borderColorChange 4s infinite alternate, borderGrow 8s infinite alternate;
+}
+
+/* Attractions Styles */
+.attractions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive columns */
+  gap: 20px;
+  justify-content: center; /* Center the grid items */
+  margin-top: 20px; /* Space between nav and attractions */
+}
+.attraction {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: stretch; /* Stretch items to fill the height */
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 15px; /* Added padding */
+  opacity: 0; /* Start with invisible */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeInUp 0.6s forwards; /* Animate on load */
+  animation-delay: 0.2s; /* Delay for a staggered effect */
+  min-height: 300px; /* Ensure a minimum height for the cards */
+}
+
+/* Ensure content stretches to fit the card */
+.attraction h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.attraction p {
+  margin: 5px 0;
+}
+
+/* Keyframes for animations */
+@keyframes borderColorChange {
+  0% {
+      border-image-source: linear-gradient(45deg, #a57c5e, #d7a07d);
+  }
+  100% {
+      border-image-source: linear-gradient(45deg, #d7a07d, #a57c5e);
+  }
+}
+
+@keyframes backgroundColorChange {
+  0% {
+      background: linear-gradient(45deg, #f5f5f5, #d7a07d);
+  }
+  100% {
+      background: linear-gradient(45deg, #d7a07d, #f5f5f5);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1.02); /* Slightly zoom effect */
+  }
+}
+
+@keyframes hoverShadow {
+  from {
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); /* Default shadow */
+  }
+  to {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Larger shadow on hover */
+  }
+}
+
+@keyframes slideInDown {
+  from {
+      transform: translateY(-100px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes borderGrow {
+  0% {
+      border-width: 5px;
+  }
+  100% {
+      border-width: 8px; /* Grow effect */
+  }
+}

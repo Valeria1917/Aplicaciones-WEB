@@ -1,0 +1,39 @@
+
+.cascading-right {
+  margin-right: -150px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+.red{
+  color:red;
+}
+
+@media (width < 1024px) {
+  .imagen-registro{
+    display: none;
+  }
+}
+
+section{
+  background-color: #262020;
+}
+
+.link{
+  text-decoration: none;
+  color: #1a2537;
+  font-weight: 500;
+}
+
+.btn{
+  background-color: #1a2537;
+  border-radius: 16px;
+}
+
+.fw-bold{
+  font-size: 30px;
+}

@@ -1,0 +1,118 @@
+<section class="text-center text-lg-start mx-auto">
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-4 mb-5 mb-lg-2">
+        <div class="card cascading-right bg-body-tertiary" style="backdrop-filter: blur(30px);">
+          <div class="card-body p-4 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Registrate</h2>
+
+            <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="nom_usr">Nombre</label>
+                    <input [ngClass]="{'is-invalid': hasErrors('nom_usr', 'required')}"
+                    type="text" id="nom_usr" class="form-control" formControlName="nom_usr" placeholder="Nombre" required>
+                    <div class="text-danger" *ngIf="hasErrors('nom_usr', 'required')">Campo requerido.</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="app_usr">Apellido(s)</label>
+                    <input [ngClass]="{'is-invalid': hasErrors('app_usr', 'required')}"
+                    type="text" id="app_usr" class="form-control" formControlName="app_usr" placeholder="Apellido(s)" required>
+                    <div class="text-danger" *ngIf="hasErrors('app_usr', 'required')">Campo requerido.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <select [ngClass]="{'is-invalid': hasErrors('nacionalidad_usr', 'required')}"
+                  class="form-select" aria-label="Selecciona" formControlName="nacionalidad_usr" required>
+                    <option value="" selected disabled>Selecciona tu País</option>
+                    <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="hasErrors('nacionalidad_usr', 'required')">Campo requerido.</div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <select [ngClass]="{'is-invalid': hasErrors('sexo_usr', 'required')}"
+                  class="form-select" aria-label="Sexo" formControlName="sexo_usr" required>
+                    <option value="" selected disabled>Selecciona tu Sexo</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                  </select>
+                  <div class="text-danger" *ngIf="hasErrors('sexo_usr', 'required')">Campo requerido.</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="edad_usr">Edad</label>
+                    <input [ngClass]="{'is-invalid': hasErrors('edad_usr', 'required')}"
+                    type="number" min="5" id="edad_usr" class="form-control" formControlName="edad_usr" placeholder="Edad" required>
+                    <div class="text-danger" *ngIf="hasErrors('edad_usr', 'required')">Campo requerido.</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label class="form-label" for="ciudad_usr">Ciudad</label>
+                  <select [ngClass]="{'is-invalid': hasErrors('ciudad_usr', 'required')}"
+                  class="form-select" id="ciudad_usr" aria-label="Selecciona tu Ciudad" formControlName="ciudad_usr" required>
+                    <option value="" selected disabled>Selecciona tu Ciudad</option>
+                    <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                  </select>
+                  <div class="text-danger" *ngIf="hasErrors('ciudad_usr', 'required')">Campo requerido.</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="email_usr">Email</label>
+                    <input [ngClass]="{'is-invalid': hasErrors('email_usr', 'required')}"
+                    type="email" id="email_usr" class="form-control" formControlName="email_usr" placeholder="Correo electrónico">
+                    <div class="text-danger" *ngIf="hasErrors('email_usr', 'required')">Campo requerido.</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="passwd_usr">Contraseña</label>
+                    <input [ngClass]="{'is-invalid': hasErrors('passwd_usr', 'required') || hasErrors('passwd_usr', 'minlength')}"
+                      type="password" id="passwd_usr" class="form-control" formControlName="passwd_usr" placeholder="Contraseña" minlength="6">
+                    <div class="text-danger" *ngIf="hasErrors('passwd_usr', 'required')">Campo requerido.</div>
+                    <div class="text-danger" *ngIf="hasErrors('passwd_usr', 'minlength')">La Contraseña debe tener mínimo 6 caracteres.</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-12">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="confirm_passwd_usr">Confirmar Contraseña</label>
+                    <input type="password" id="confirm_passwd_usr" class="form-control" formControlName="confirm_passwd_usr" placeholder="Confirmar Contraseña" required>
+                    <div *ngIf="registroForm.get('confirm_passwd_usr')?.errors?.['mustMatch']">
+                      <span class="red">Las contraseñas deben coincidir.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <br>
+                <button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid">Crear Cuenta</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0 imagen-registro">
+        <img src="https://verestmagazine.com/wp-content/uploads/2023/10/Dolores-Hidalgo-Guanajuato-1.jpg"
+          class="w-100 rounded-4 shadow-4" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
